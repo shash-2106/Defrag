@@ -1,0 +1,441 @@
+{
+  "timestamp": "2026-08-29T19:21:19.951771",
+  "summary": {
+    "total_resources": 5,
+    "total_subscriptions": 2,
+    "total_monthly_cost": 384.5,
+    "providers_queried": [
+      "aws",
+      "gcp",
+      "github",
+      "stripe",
+      "render"
+    ],
+    "providers_failed": [
+      "aws",
+      "gcp",
+      "github",
+      "stripe",
+      "render"
+    ],
+    "projects_inferred": 2,
+    "escalation_required": 1,
+    "total_savings_opportunity_monthly": 256.0,
+    "total_savings_opportunity_annual": 3072.0
+  },
+  "resources": [
+    {
+      "id": "i-prod-backend",
+      "provider": "aws",
+      "type": "ec2",
+      "name": "pet-tracker-backend",
+      "created_date": "2024-01-15",
+      "monthly_cost": 120.0,
+      "last_usage_date": "2026-08-20",
+      "tags": {
+        "project": "pet-tracker",
+        "env": "production"
+      },
+      "billing_status": "active",
+      "expiry_date": null,
+      "cpu_utilization_percent": 12.5,
+      "has_backups": false,
+      "region": "us-east-1"
+    },
+    {
+      "id": "rds-pet-tracker-db",
+      "provider": "aws",
+      "type": "rds",
+      "name": "pet-tracker-db",
+      "created_date": "2024-01-20",
+      "monthly_cost": 180.0,
+      "last_usage_date": "2026-08-22",
+      "tags": {
+        "project": "pet-tracker"
+      },
+      "billing_status": "active",
+      "expiry_date": null,
+      "cpu_utilization_percent": null,
+      "has_backups": true,
+      "region": "us-east-1"
+    },
+    {
+      "id": "lambda-ml-warmer",
+      "provider": "aws",
+      "type": "lambda",
+      "name": "ml-experiment-warmup",
+      "created_date": "2023-06-01",
+      "monthly_cost": 4.5,
+      "last_usage_date": "2024-06-10",
+      "tags": {
+        "project": "ml-experiment-v2"
+      },
+      "billing_status": "active",
+      "expiry_date": null,
+      "cpu_utilization_percent": 0.0,
+      "has_backups": false,
+      "region": "us-east-1"
+    },
+    {
+      "id": "gcp-ml-pipeline",
+      "provider": "gcp",
+      "type": "compute",
+      "name": "ml-experiment-pipeline",
+      "created_date": "2024-03-10",
+      "monthly_cost": 80.0,
+      "last_usage_date": "2024-06-10",
+      "tags": {
+        "project": "ml-experiment-v2"
+      },
+      "billing_status": "active",
+      "expiry_date": null,
+      "cpu_utilization_percent": null,
+      "has_backups": false,
+      "region": "us-east-1"
+    },
+    {
+      "id": "repo-pet-tracker",
+      "provider": "github",
+      "type": "github_repo",
+      "name": "pet-tracker-api",
+      "created_date": "2024-01-10",
+      "monthly_cost": 0.0,
+      "last_usage_date": "2026-08-15",
+      "tags": {
+        "project": "pet-tracker"
+      },
+      "billing_status": "free",
+      "expiry_date": null,
+      "cpu_utilization_percent": null,
+      "has_backups": false,
+      "region": "us-east-1"
+    }
+  ],
+  "subscriptions": [
+    {
+      "id": "sub_audible",
+      "provider": "stripe",
+      "service": "Audible",
+      "renewal_date": "2026-08-30",
+      "monthly_cost": 14.99,
+      "auto_renew": true,
+      "last_usage_date": "2026-07-15",
+      "billing_cycle": "monthly",
+      "status": "active"
+    },
+    {
+      "id": "sub_render_1",
+      "provider": "render",
+      "service": "render_backend",
+      "renewal_date": "2026-08-31",
+      "monthly_cost": 7.0,
+      "auto_renew": true,
+      "last_usage_date": "2026-08-22",
+      "billing_cycle": "monthly",
+      "status": "active"
+    }
+  ],
+  "billing_events": [
+    {
+      "service": "Audible",
+      "event_type": "renewal",
+      "amount": 14.99,
+      "detected_date": "2026-08-29T19:21:19.931710",
+      "renewal_date": "2026-08-30",
+      "source": "api"
+    },
+    {
+      "service": "render_backend",
+      "event_type": "renewal",
+      "amount": 7.0,
+      "detected_date": "2026-08-29T19:21:19.931716",
+      "renewal_date": "2026-08-31",
+      "source": "api"
+    }
+  ],
+  "discovery_errors": [
+    {
+      "provider": "aws",
+      "error": "Unable to locate credentials",
+      "timestamp": "2026-08-29T19:21:19.931676"
+    },
+    {
+      "provider": "gcp",
+      "error": "No GCP_PROJECT_ID or credentials",
+      "timestamp": "2026-08-29T19:21:19.931692"
+    },
+    {
+      "provider": "github",
+      "error": "No GITHUB_TOKEN",
+      "timestamp": "2026-08-29T19:21:19.931695"
+    },
+    {
+      "provider": "stripe",
+      "error": "No STRIPE_API_KEY",
+      "timestamp": "2026-08-29T19:21:19.931699"
+    },
+    {
+      "provider": "render",
+      "error": "No RENDER_API_KEY",
+      "timestamp": "2026-08-29T19:21:19.931703"
+    }
+  ],
+  "projects": [
+    {
+      "name": "pet-tracker",
+      "inferred_membership_confidence": 0.7999999999999999,
+      "resources": [
+        {
+          "id": "i-prod-backend",
+          "provider": "aws",
+          "type": "ec2",
+          "name": "pet-tracker-backend",
+          "created_date": "2024-01-15",
+          "monthly_cost": 120.0,
+          "last_usage_date": "2026-08-20",
+          "tags": {
+            "project": "pet-tracker",
+            "env": "production"
+          },
+          "billing_status": "active",
+          "expiry_date": null,
+          "cpu_utilization_percent": 12.5,
+          "has_backups": false,
+          "region": "us-east-1"
+        },
+        {
+          "id": "rds-pet-tracker-db",
+          "provider": "aws",
+          "type": "rds",
+          "name": "pet-tracker-db",
+          "created_date": "2024-01-20",
+          "monthly_cost": 180.0,
+          "last_usage_date": "2026-08-22",
+          "tags": {
+            "project": "pet-tracker"
+          },
+          "billing_status": "active",
+          "expiry_date": null,
+          "cpu_utilization_percent": null,
+          "has_backups": true,
+          "region": "us-east-1"
+        },
+        {
+          "id": "repo-pet-tracker",
+          "provider": "github",
+          "type": "github_repo",
+          "name": "pet-tracker-api",
+          "created_date": "2024-01-10",
+          "monthly_cost": 0.0,
+          "last_usage_date": "2026-08-15",
+          "tags": {
+            "project": "pet-tracker"
+          },
+          "billing_status": "free",
+          "expiry_date": null,
+          "cpu_utilization_percent": null,
+          "has_backups": false,
+          "region": "us-east-1"
+        }
+      ],
+      "subscriptions": [],
+      "dependencies": {
+        "i-prod-backend": [
+          "rds-pet-tracker-db"
+        ]
+      },
+      "last_github_activity": "2026-08-15",
+      "days_since_activity": 15,
+      "critical_deadlines": [],
+      "risk_level": "RiskLevel.LOW"
+    },
+    {
+      "name": "ml-experiment-v2",
+      "inferred_membership_confidence": 0.6,
+      "resources": [
+        {
+          "id": "lambda-ml-warmer",
+          "provider": "aws",
+          "type": "lambda",
+          "name": "ml-experiment-warmup",
+          "created_date": "2023-06-01",
+          "monthly_cost": 4.5,
+          "last_usage_date": "2024-06-10",
+          "tags": {
+            "project": "ml-experiment-v2"
+          },
+          "billing_status": "active",
+          "expiry_date": null,
+          "cpu_utilization_percent": 0.0,
+          "has_backups": false,
+          "region": "us-east-1"
+        },
+        {
+          "id": "gcp-ml-pipeline",
+          "provider": "gcp",
+          "type": "compute",
+          "name": "ml-experiment-pipeline",
+          "created_date": "2024-03-10",
+          "monthly_cost": 80.0,
+          "last_usage_date": "2024-06-10",
+          "tags": {
+            "project": "ml-experiment-v2"
+          },
+          "billing_status": "active",
+          "expiry_date": null,
+          "cpu_utilization_percent": null,
+          "has_backups": false,
+          "region": "us-east-1"
+        }
+      ],
+      "subscriptions": [],
+      "dependencies": {},
+      "last_github_activity": null,
+      "days_since_activity": 999,
+      "critical_deadlines": [],
+      "risk_level": "RiskLevel.LOW"
+    }
+  ],
+  "risk_assessments": [
+    {
+      "project_name": "pet-tracker",
+      "urgency_level": "LOW",
+      "blast_radius": "WIDE",
+      "days_to_outage": 999,
+      "confidence": 0.7,
+      "recommended_action": "ActionType.KEEP",
+      "unsafe_action_flags": [],
+      "estimated_damage": {
+        "project_downtime_hours": 24,
+        "user_impact": "production_unavailable",
+        "data_risk": "database_inaccessible",
+        "cost_multiplier": 3600.0
+      },
+      "escalate_for_review": false,
+      "escalation_reason": null
+    },
+    {
+      "project_name": "ml-experiment-v2",
+      "urgency_level": "LOW",
+      "blast_radius": "NARROW",
+      "days_to_outage": 999,
+      "confidence": 0.5,
+      "recommended_action": "ActionType.ARCHIVE",
+      "unsafe_action_flags": [],
+      "estimated_damage": {
+        "project_downtime_hours": 0,
+        "user_impact": "internal_only",
+        "data_risk": "none",
+        "cost_multiplier": 1014.0
+      },
+      "escalate_for_review": true,
+      "escalation_reason": "Confidence < 0.60 \u2014 ambiguous project ownership"
+    }
+  ],
+  "optimization_plans": {
+    "pet-tracker": [
+      {
+        "plan_id": "plan_pet-tracker_maintain",
+        "project_name": "pet-tracker",
+        "plan_name": "MAINTAIN",
+        "description": "Renew all critical services, keep current stack",
+        "actions": [],
+        "total_monthly_savings": 0.0,
+        "effort_hours": 0.5,
+        "risk_level": "RiskLevel.LOW",
+        "recommended": false,
+        "annual_savings": 0.0,
+        "rollback_plan": "Cancel renewals within grace period",
+        "implementation_steps": [
+          "Verify all services active",
+          "Renew critical subscriptions",
+          "Confirm in dashboard"
+        ]
+      },
+      {
+        "plan_id": "plan_pet-tracker_migrate",
+        "project_name": "pet-tracker",
+        "plan_name": "MIGRATE",
+        "description": "Move to cheaper stack, save $256.00/mo",
+        "actions": [
+          {
+            "action": "MIGRATE",
+            "resource_id": "i-prod-backend",
+            "resource_name": "pet-tracker-backend",
+            "from": "ec2",
+            "to": "Fly.io",
+            "reason": "Save $115.00/mo",
+            "dry_run_expected": "Would migrate pet-tracker-backend \u2192 Fly.io"
+          },
+          {
+            "action": "MIGRATE",
+            "resource_id": "rds-pet-tracker-db",
+            "resource_name": "pet-tracker-db",
+            "from": "rds",
+            "to": "PlanetScale",
+            "reason": "Save $141.00/mo",
+            "dry_run_expected": "Would migrate pet-tracker-db \u2192 PlanetScale"
+          }
+        ],
+        "total_monthly_savings": 256.0,
+        "effort_hours": 14.0,
+        "risk_level": "RiskLevel.MEDIUM",
+        "recommended": true,
+        "annual_savings": 3072.0,
+        "rollback_plan": "Keep old stack running during migration; rollback by reverting DNS",
+        "implementation_steps": [
+          "Provision new stack",
+          "Parallel run 48h",
+          "Verify data",
+          "Cutover DNS",
+          "Decommission old"
+        ]
+      }
+    ]
+  },
+  "execution_records": [
+    {
+      "execution_id": "exec_3b2801b8",
+      "plan_id": "plan_pet-tracker_migrate",
+      "user_id": "test_user_1",
+      "status": "DRY_RUN_OK",
+      "started_at": "2026-08-29T19:21:19.946504",
+      "completed_at": "2026-08-29T19:21:19.946557",
+      "dry_run_results": [
+        {
+          "action": "MIGRATE",
+          "resource_id": "i-prod-backend",
+          "dry_run_status": "DRY_RUN_OK",
+          "expected_result": "Would migrate pet-tracker-backend \u2192 Fly.io",
+          "dry_run_error": null
+        },
+        {
+          "action": "MIGRATE",
+          "resource_id": "rds-pet-tracker-db",
+          "dry_run_status": "DRY_RUN_OK",
+          "expected_result": "Would migrate pet-tracker-db \u2192 PlanetScale",
+          "dry_run_error": null
+        }
+      ],
+      "actions_executed": [],
+      "verification_polls": [],
+      "audit_log_id": "log_e4507e36",
+      "cost_savings_realized": 0.0
+    }
+  ],
+  "audit_log": [
+    {
+      "log_id": "log_e4507e36",
+      "agent_name": "execution_agent",
+      "decision": "DRY_RUN_OK: MIGRATE \u2014 2 actions ready",
+      "confidence": 0.95,
+      "evidence": [
+        "Would migrate pet-tracker-backend \u2192 Fly.io",
+        "Would migrate pet-tracker-db \u2192 PlanetScale"
+      ],
+      "timestamp": "2026-08-29T19:21:19.946540",
+      "action_id": "exec_3b2801b8"
+    }
+  ],
+  "dashboard": "\n\u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2557\n\u2551        YOUR LIFECYCLE DASHBOARD             \u2551\n\u255a\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u255d\n\n\ud83d\udcca OVERVIEW\n  \ud83d\udd34 0 CRITICAL (action needed in 0\u20133 days)\n  \ud83d\udfe0 0 HIGH (action needed in 3\u20137 days)\n  \ud83d\udfe1 1 REQUIRES HUMAN REVIEW\n  \ud83d\udfe2 2 HEALTHY\n\n  Total monthly cost:  $384.50\n  Savings opportunity: $256.00/mo  ($3072.00/yr)\n  Total resources:     5\n\n\ud83d\udcb3 BILLING EVENTS\n  \ud83d\udd14 Audible: renewal \u2014 $14.99 (due 2026-08-30)\n  \ud83d\udd14 render_backend: renewal \u2014 $7.00 (due 2026-08-31)\n\n\ud83d\udccb OPTIMIZATION OPPORTUNITIES\n  \u2705 pet-tracker: MIGRATE \u2014 $256.00/mo ($3072.00/yr)\n\n\u2705 Dry-run complete. Awaiting human approval to execute. [VIEW PLANS]\n"
+}

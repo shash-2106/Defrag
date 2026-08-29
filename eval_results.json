@@ -1,0 +1,222 @@
+[
+  {
+    "id": 1,
+    "name": "Clearly Abandoned EC2",
+    "ground_truth": "STOP",
+    "baseline": "STOP",
+    "baseline_conf": 0.8,
+    "agent": "STOP",
+    "agent_conf": 0.92,
+    "baseline_correct": true,
+    "agent_correct": true
+  },
+  {
+    "id": 2,
+    "name": "Database With Active Dependencies",
+    "ground_truth": "KEEP",
+    "baseline": "STOP",
+    "baseline_conf": 0.82,
+    "agent": "KEEP",
+    "agent_conf": 0.94,
+    "baseline_correct": false,
+    "agent_correct": true
+  },
+  {
+    "id": 3,
+    "name": "Backup Lambda (Periodic Activity)",
+    "ground_truth": "KEEP",
+    "baseline": "KEEP",
+    "baseline_conf": 0.65,
+    "agent": "KEEP",
+    "agent_conf": 0.88,
+    "baseline_correct": true,
+    "agent_correct": true
+  },
+  {
+    "id": 4,
+    "name": "Multi-Service Project Deadline Collision",
+    "ground_truth": "RENEW",
+    "baseline": "MONITOR",
+    "baseline_conf": 0.5,
+    "agent": "RENEW",
+    "agent_conf": 0.96,
+    "baseline_correct": false,
+    "agent_correct": true
+  },
+  {
+    "id": 5,
+    "name": "Orphaned Resource (Ambiguous Ownership)",
+    "ground_truth": "ESCALATE",
+    "baseline": "STOP",
+    "baseline_conf": 0.68,
+    "agent": "ESCALATE",
+    "agent_conf": 0.78,
+    "baseline_correct": false,
+    "agent_correct": true
+  },
+  {
+    "id": 6,
+    "name": "Lambda With TODO Comment",
+    "ground_truth": "KEEP",
+    "baseline": "STOP",
+    "baseline_conf": 0.75,
+    "agent": "KEEP",
+    "agent_conf": 0.88,
+    "baseline_correct": false,
+    "agent_correct": true
+  },
+  {
+    "id": 7,
+    "name": "Over-Provisioned Cluster Optimization",
+    "ground_truth": "MONITOR",
+    "baseline": "ESCALATE",
+    "baseline_conf": 0.5,
+    "agent": "MONITOR",
+    "agent_conf": 0.85,
+    "baseline_correct": false,
+    "agent_correct": true
+  },
+  {
+    "id": 8,
+    "name": "Subscription Without Safe Cancellation",
+    "ground_truth": "ESCALATE",
+    "baseline": "ESCALATE",
+    "baseline_conf": 0.5,
+    "agent": "ESCALATE",
+    "agent_conf": 0.85,
+    "baseline_correct": true,
+    "agent_correct": true
+  },
+  {
+    "id": 9,
+    "name": "Duplicate Services Across Accounts",
+    "ground_truth": "MONITOR",
+    "baseline": "ESCALATE",
+    "baseline_conf": 0.5,
+    "agent": "MONITOR",
+    "agent_conf": 0.85,
+    "baseline_correct": false,
+    "agent_correct": true
+  },
+  {
+    "id": 10,
+    "name": "Stop vs. Delete (Data Backup)",
+    "ground_truth": "KEEP",
+    "baseline": "KEEP",
+    "baseline_conf": 0.65,
+    "agent": "KEEP",
+    "agent_conf": 0.88,
+    "baseline_correct": true,
+    "agent_correct": true
+  },
+  {
+    "id": 11,
+    "name": "SaaS Free Trial Expiring Tomorrow",
+    "ground_truth": "ESCALATE",
+    "baseline": "ESCALATE",
+    "baseline_conf": 0.5,
+    "agent": "ESCALATE",
+    "agent_conf": 0.85,
+    "baseline_correct": true,
+    "agent_correct": true
+  },
+  {
+    "id": 12,
+    "name": "Abandoned Project, Active Deployment",
+    "ground_truth": "ESCALATE",
+    "baseline": "ESCALATE",
+    "baseline_conf": 0.5,
+    "agent": "ESCALATE",
+    "agent_conf": 0.85,
+    "baseline_correct": true,
+    "agent_correct": true
+  },
+  {
+    "id": 13,
+    "name": "Recently Abandoned (15 Days)",
+    "ground_truth": "MONITOR",
+    "baseline": "ESCALATE",
+    "baseline_conf": 0.5,
+    "agent": "MONITOR",
+    "agent_conf": 0.85,
+    "baseline_correct": false,
+    "agent_correct": true
+  },
+  {
+    "id": 14,
+    "name": "Cache With Rare Access Patterns",
+    "ground_truth": "KEEP",
+    "baseline": "STOP",
+    "baseline_conf": 0.72,
+    "agent": "KEEP",
+    "agent_conf": 0.91,
+    "baseline_correct": false,
+    "agent_correct": true
+  },
+  {
+    "id": 15,
+    "name": "API Credits Running Out",
+    "ground_truth": "RENEW",
+    "baseline": "ESCALATE",
+    "baseline_conf": 0.5,
+    "agent": "RENEW",
+    "agent_conf": 0.85,
+    "baseline_correct": false,
+    "agent_correct": true
+  },
+  {
+    "id": 16,
+    "name": "Shadow IT Tool (Unauthorized)",
+    "ground_truth": "ESCALATE",
+    "baseline": "ESCALATE",
+    "baseline_conf": 0.5,
+    "agent": "ESCALATE",
+    "agent_conf": 0.85,
+    "baseline_correct": true,
+    "agent_correct": true
+  },
+  {
+    "id": 17,
+    "name": "Premium Tier, Basic Usage",
+    "ground_truth": "MONITOR",
+    "baseline": "ESCALATE",
+    "baseline_conf": 0.5,
+    "agent": "MONITOR",
+    "agent_conf": 0.85,
+    "baseline_correct": false,
+    "agent_correct": true
+  },
+  {
+    "id": 18,
+    "name": "Conflicting Signals",
+    "ground_truth": "ESCALATE",
+    "baseline": "ESCALATE",
+    "baseline_conf": 0.5,
+    "agent": "ESCALATE",
+    "agent_conf": 0.85,
+    "baseline_correct": true,
+    "agent_correct": true
+  },
+  {
+    "id": 19,
+    "name": "Complex Project Lifecycle Decision",
+    "ground_truth": "MONITOR",
+    "baseline": "ESCALATE",
+    "baseline_conf": 0.5,
+    "agent": "MONITOR",
+    "agent_conf": 0.85,
+    "baseline_correct": false,
+    "agent_correct": true
+  },
+  {
+    "id": 20,
+    "name": "Shared Infrastructure",
+    "ground_truth": "ESCALATE",
+    "baseline": "ESCALATE",
+    "baseline_conf": 0.5,
+    "agent": "ESCALATE",
+    "agent_conf": 0.85,
+    "baseline_correct": true,
+    "agent_correct": true
+  }
+]

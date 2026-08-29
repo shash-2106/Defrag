@@ -1,0 +1,25 @@
+# Core
+boto3>=1.34.0
+botocore>=1.34.0
+requests>=2.31.0
+python-dotenv>=1.0.0
+
+# GCP
+google-cloud-compute>=1.14.0
+google-auth>=2.27.0
+
+# GitHub
+PyGithub>=2.1.1
+
+# Stripe
+stripe>=8.0.0
+
+# Database
+sqlalchemy>=2.0.0
+psycopg2-binary>=2.9.9
+
+# Firebase (optional)
+firebase-admin>=6.4.0
+
+# Evaluation
+tabulate>=0.9.0
