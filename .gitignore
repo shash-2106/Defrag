@@ -1,4 +1,47 @@
-venv
-__pycache__
+# Environment secrets — NEVER commit these
 .env
-docs/
+*.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+venv/
+env/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
+.eggs/
+dist/
+build/
+*.egg-info/
+
+# Database
+defrag.db
+*.sqlite3
+*.db
+
+# Outputs (generated, not source)
+orchestrator_output.json
+eval_results.json
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Node
+node_modules/
+npm-debug.log
+
+# Media / Big binaries
+*.mp4
+*.mov

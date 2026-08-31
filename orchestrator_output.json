@@ -1,72 +1,106 @@
 {
-  "timestamp": "2026-08-29T19:21:19.951771",
+  "run_id": "run_cbe6a779",
+  "timestamp": "2026-08-31T17:16:16.951951",
+  "simulation_mode": true,
+  "llm_provider": "none (rule-based fallback)",
+  "llm_model": null,
+  "providers_status": {
+    "aws": "not_connected",
+    "github": "not_connected",
+    "stripe": "not_connected",
+    "render": "not_connected"
+  },
   "summary": {
     "total_resources": 5,
-    "total_subscriptions": 2,
-    "total_monthly_cost": 384.5,
-    "providers_queried": [
-      "aws",
-      "gcp",
-      "github",
-      "stripe",
-      "render"
-    ],
-    "providers_failed": [
-      "aws",
-      "gcp",
-      "github",
-      "stripe",
-      "render"
-    ],
-    "projects_inferred": 2,
-    "escalation_required": 1,
-    "total_savings_opportunity_monthly": 256.0,
-    "total_savings_opportunity_annual": 3072.0
+    "total_subscriptions": 3,
+    "total_monthly_cost": 385.5,
+    "projects_inferred": 4,
+    "escalation_required": 2,
+    "total_savings_opportunity_monthly": 38.5,
+    "total_savings_opportunity_annual": 462.0,
+    "discovery_errors": [
+      {
+        "provider": "stripe",
+        "error": "Unexpected error communicating with Stripe.  If this problem persists,\nlet us know at support@stripe.com.\n\n(Network error: ConnectionError: HTTPSConnectionPool(host='api.stripe.com', port=443): Max retries exceeded with url: /v1/subscriptions?limit=20&expand%5B0%5D=data.items.data.price.product (Caused by NameResolutionError(\"HTTPSConnection(host='api.stripe.com', port=443): Failed to resolve 'api.stripe.com' ([Errno 8] nodename nor servname provided, or not known)\")))",
+        "timestamp": "2026-08-31T17:16:16.829474"
+      },
+      {
+        "provider": "render",
+        "error": "HTTPSConnectionPool(host='api.render.com', port=443): Max retries exceeded with url: /v1/services?limit=20 (Caused by NameResolutionError(\"HTTPSConnection(host='api.render.com', port=443): Failed to resolve 'api.render.com' ([Errno 8] nodename nor servname provided, or not known)\"))",
+        "timestamp": "2026-08-31T17:16:16.831301"
+      }
+    ]
   },
   "resources": [
     {
-      "id": "i-prod-backend",
+      "id": "i-0a1b2c3d4e5f67890",
       "provider": "aws",
       "type": "ec2",
       "name": "pet-tracker-backend",
-      "created_date": "2024-01-15",
-      "monthly_cost": 120.0,
-      "last_usage_date": "2026-08-20",
+      "created_date": "2024-01-15T10:00:00",
+      "monthly_cost": 87.0,
+      "last_usage_date": "2026-08-20T14:23:00",
       "tags": {
         "project": "pet-tracker",
-        "env": "production"
+        "env": "production",
+        "owner": "alice"
       },
       "billing_status": "active",
       "expiry_date": null,
       "cpu_utilization_percent": 12.5,
       "has_backups": false,
-      "region": "us-east-1"
+      "region": "us-east-1",
+      "state": "running",
+      "data_source": "simulated"
     },
     {
       "id": "rds-pet-tracker-db",
       "provider": "aws",
       "type": "rds",
       "name": "pet-tracker-db",
-      "created_date": "2024-01-20",
+      "created_date": "2024-01-20T10:00:00",
       "monthly_cost": 180.0,
-      "last_usage_date": "2026-08-22",
+      "last_usage_date": "2026-08-22T09:00:00",
       "tags": {
-        "project": "pet-tracker"
+        "project": "pet-tracker",
+        "env": "production"
       },
       "billing_status": "active",
       "expiry_date": null,
       "cpu_utilization_percent": null,
       "has_backups": true,
-      "region": "us-east-1"
+      "region": "us-east-1",
+      "state": "available",
+      "data_source": "simulated"
+    },
+    {
+      "id": "i-0dead1234beef5678",
+      "provider": "aws",
+      "type": "ec2",
+      "name": "ml-experiment-v2-worker",
+      "created_date": "2023-06-01T08:00:00",
+      "monthly_cost": 34.0,
+      "last_usage_date": "2024-06-10T00:00:00",
+      "tags": {
+        "project": "ml-experiment-v2",
+        "env": "dev"
+      },
+      "billing_status": "active",
+      "expiry_date": null,
+      "cpu_utilization_percent": 0.3,
+      "has_backups": false,
+      "region": "us-east-1",
+      "state": "running",
+      "data_source": "simulated"
     },
     {
       "id": "lambda-ml-warmer",
       "provider": "aws",
       "type": "lambda",
       "name": "ml-experiment-warmup",
-      "created_date": "2023-06-01",
+      "created_date": "2023-06-01T08:00:00",
       "monthly_cost": 4.5,
-      "last_usage_date": "2024-06-10",
+      "last_usage_date": "2024-06-10T00:00:00",
       "tags": {
         "project": "ml-experiment-v2"
       },
@@ -74,193 +108,246 @@
       "expiry_date": null,
       "cpu_utilization_percent": 0.0,
       "has_backups": false,
-      "region": "us-east-1"
+      "region": "us-east-1",
+      "state": "active",
+      "data_source": "simulated"
     },
     {
-      "id": "gcp-ml-pipeline",
-      "provider": "gcp",
-      "type": "compute",
-      "name": "ml-experiment-pipeline",
-      "created_date": "2024-03-10",
+      "id": "i-legacy-backup-07abc",
+      "provider": "aws",
+      "type": "ec2",
+      "name": "legacy-prod-backup",
+      "created_date": "2026-02-15T00:00:00",
       "monthly_cost": 80.0,
-      "last_usage_date": "2024-06-10",
-      "tags": {
-        "project": "ml-experiment-v2"
-      },
+      "last_usage_date": "2026-02-20T00:00:00",
+      "tags": {},
       "billing_status": "active",
       "expiry_date": null,
-      "cpu_utilization_percent": null,
+      "cpu_utilization_percent": 1.1,
       "has_backups": false,
-      "region": "us-east-1"
-    },
-    {
-      "id": "repo-pet-tracker",
-      "provider": "github",
-      "type": "github_repo",
-      "name": "pet-tracker-api",
-      "created_date": "2024-01-10",
-      "monthly_cost": 0.0,
-      "last_usage_date": "2026-08-15",
-      "tags": {
-        "project": "pet-tracker"
-      },
-      "billing_status": "free",
-      "expiry_date": null,
-      "cpu_utilization_percent": null,
-      "has_backups": false,
-      "region": "us-east-1"
+      "region": "us-east-1",
+      "state": "running",
+      "data_source": "simulated"
     }
   ],
   "subscriptions": [
     {
-      "id": "sub_audible",
+      "id": "sub_audible_001",
       "provider": "stripe",
-      "service": "Audible",
-      "renewal_date": "2026-08-30",
+      "service": "Audible Premium",
+      "renewal_date": "2026-09-02",
       "monthly_cost": 14.99,
       "auto_renew": true,
       "last_usage_date": "2026-07-15",
       "billing_cycle": "monthly",
-      "status": "active"
+      "status": "active",
+      "data_source": "simulated"
     },
     {
-      "id": "sub_render_1",
+      "id": "sub_render_backend",
       "provider": "render",
-      "service": "render_backend",
-      "renewal_date": "2026-08-31",
+      "service": "render-pet-tracker",
+      "renewal_date": "2026-09-09",
       "monthly_cost": 7.0,
       "auto_renew": true,
       "last_usage_date": "2026-08-22",
       "billing_cycle": "monthly",
-      "status": "active"
+      "status": "active",
+      "data_source": "simulated"
+    },
+    {
+      "id": "sub_figma_trial",
+      "provider": "stripe",
+      "service": "Figma Pro Trial",
+      "renewal_date": "2026-09-01",
+      "monthly_cost": 12.0,
+      "auto_renew": true,
+      "last_usage_date": "2026-08-01",
+      "billing_cycle": "monthly",
+      "status": "active",
+      "data_source": "simulated"
     }
   ],
   "billing_events": [
     {
-      "service": "Audible",
-      "event_type": "renewal",
+      "service": "Audible Premium",
+      "event_type": "renewal_imminent",
       "amount": 14.99,
-      "detected_date": "2026-08-29T19:21:19.931710",
-      "renewal_date": "2026-08-30",
-      "source": "api"
+      "detected_date": "2026-08-31T17:16:16.831945",
+      "renewal_date": "2026-09-02",
+      "source": "simulated"
     },
     {
-      "service": "render_backend",
-      "event_type": "renewal",
-      "amount": 7.0,
-      "detected_date": "2026-08-29T19:21:19.931716",
-      "renewal_date": "2026-08-31",
-      "source": "api"
+      "service": "Figma Pro Trial",
+      "event_type": "renewal_imminent",
+      "amount": 12.0,
+      "detected_date": "2026-08-31T17:16:16.832320",
+      "renewal_date": "2026-09-01",
+      "source": "simulated"
     }
   ],
-  "discovery_errors": [
+  "timeline": [
     {
-      "provider": "aws",
-      "error": "Unable to locate credentials",
-      "timestamp": "2026-08-29T19:21:19.931676"
+      "project": "personal-services",
+      "item_id": "sub_figma_trial",
+      "date": "2026-09-01",
+      "days_until": 0,
+      "impact_if_ignored": "A recurring charge may occur; no infrastructure dependency is known.",
+      "severity": "HIGH"
     },
     {
-      "provider": "gcp",
-      "error": "No GCP_PROJECT_ID or credentials",
-      "timestamp": "2026-08-29T19:21:19.931692"
+      "project": "personal-services",
+      "item_id": "sub_audible_001",
+      "date": "2026-09-02",
+      "days_until": 1,
+      "impact_if_ignored": "A recurring charge may occur; no infrastructure dependency is known.",
+      "severity": "HIGH"
     },
     {
-      "provider": "github",
-      "error": "No GITHUB_TOKEN",
-      "timestamp": "2026-08-29T19:21:19.931695"
-    },
-    {
-      "provider": "stripe",
-      "error": "No STRIPE_API_KEY",
-      "timestamp": "2026-08-29T19:21:19.931699"
-    },
-    {
-      "provider": "render",
-      "error": "No RENDER_API_KEY",
-      "timestamp": "2026-08-29T19:21:19.931703"
+      "project": "pet-tracker",
+      "item_id": "sub_render_backend",
+      "date": "2026-09-09",
+      "days_until": 8,
+      "impact_if_ignored": "Service may become unavailable and affect 1 inferred dependency edge(s).",
+      "severity": "MEDIUM"
     }
   ],
+  "portfolio": {
+    "allocations": [
+      {
+        "project": "pet-tracker",
+        "monthly_cost": 274.0,
+        "recommended_savings": 0
+      },
+      {
+        "project": "ml-experiment-v2",
+        "monthly_cost": 38.5,
+        "recommended_savings": 38.5
+      },
+      {
+        "project": "legacy",
+        "monthly_cost": 80.0,
+        "recommended_savings": 0.0
+      },
+      {
+        "project": "personal-services",
+        "monthly_cost": 26.99,
+        "recommended_savings": 0.0
+      }
+    ],
+    "total_monthly_cost": 419.49,
+    "preservable_savings_monthly": 38.5
+  },
   "projects": [
     {
       "name": "pet-tracker",
       "inferred_membership_confidence": 0.7999999999999999,
       "resources": [
         {
-          "id": "i-prod-backend",
+          "id": "i-0a1b2c3d4e5f67890",
           "provider": "aws",
           "type": "ec2",
           "name": "pet-tracker-backend",
-          "created_date": "2024-01-15",
-          "monthly_cost": 120.0,
-          "last_usage_date": "2026-08-20",
+          "created_date": "2024-01-15T10:00:00",
+          "monthly_cost": 87.0,
+          "last_usage_date": "2026-08-20T14:23:00",
           "tags": {
             "project": "pet-tracker",
-            "env": "production"
+            "env": "production",
+            "owner": "alice"
           },
           "billing_status": "active",
           "expiry_date": null,
           "cpu_utilization_percent": 12.5,
           "has_backups": false,
-          "region": "us-east-1"
+          "region": "us-east-1",
+          "state": "running",
+          "data_source": "simulated"
         },
         {
           "id": "rds-pet-tracker-db",
           "provider": "aws",
           "type": "rds",
           "name": "pet-tracker-db",
-          "created_date": "2024-01-20",
+          "created_date": "2024-01-20T10:00:00",
           "monthly_cost": 180.0,
-          "last_usage_date": "2026-08-22",
+          "last_usage_date": "2026-08-22T09:00:00",
           "tags": {
-            "project": "pet-tracker"
+            "project": "pet-tracker",
+            "env": "production"
           },
           "billing_status": "active",
           "expiry_date": null,
           "cpu_utilization_percent": null,
           "has_backups": true,
-          "region": "us-east-1"
-        },
-        {
-          "id": "repo-pet-tracker",
-          "provider": "github",
-          "type": "github_repo",
-          "name": "pet-tracker-api",
-          "created_date": "2024-01-10",
-          "monthly_cost": 0.0,
-          "last_usage_date": "2026-08-15",
-          "tags": {
-            "project": "pet-tracker"
-          },
-          "billing_status": "free",
-          "expiry_date": null,
-          "cpu_utilization_percent": null,
-          "has_backups": false,
-          "region": "us-east-1"
+          "region": "us-east-1",
+          "state": "available",
+          "data_source": "simulated"
         }
       ],
-      "subscriptions": [],
+      "subscriptions": [
+        {
+          "id": "sub_render_backend",
+          "provider": "render",
+          "service": "render-pet-tracker",
+          "renewal_date": "2026-09-09",
+          "monthly_cost": 7.0,
+          "auto_renew": true,
+          "last_usage_date": "2026-08-22",
+          "billing_cycle": "monthly",
+          "status": "active",
+          "data_source": "simulated"
+        }
+      ],
       "dependencies": {
-        "i-prod-backend": [
+        "i-0a1b2c3d4e5f67890": [
           "rds-pet-tracker-db"
         ]
       },
-      "last_github_activity": "2026-08-15",
-      "days_since_activity": 15,
-      "critical_deadlines": [],
-      "risk_level": "RiskLevel.LOW"
+      "last_github_activity": "2026-08-21T17:15:58.083017",
+      "days_since_activity": 10,
+      "critical_deadlines": [
+        [
+          "sub_render_backend",
+          "2026-09-09"
+        ]
+      ],
+      "risk_level": "RiskLevel.LOW",
+      "github_repo": "alice/pet-tracker",
+      "recent_commits": 23
     },
     {
       "name": "ml-experiment-v2",
-      "inferred_membership_confidence": 0.6,
+      "inferred_membership_confidence": 0.7,
       "resources": [
+        {
+          "id": "i-0dead1234beef5678",
+          "provider": "aws",
+          "type": "ec2",
+          "name": "ml-experiment-v2-worker",
+          "created_date": "2023-06-01T08:00:00",
+          "monthly_cost": 34.0,
+          "last_usage_date": "2024-06-10T00:00:00",
+          "tags": {
+            "project": "ml-experiment-v2",
+            "env": "dev"
+          },
+          "billing_status": "active",
+          "expiry_date": null,
+          "cpu_utilization_percent": 0.3,
+          "has_backups": false,
+          "region": "us-east-1",
+          "state": "running",
+          "data_source": "simulated"
+        },
         {
           "id": "lambda-ml-warmer",
           "provider": "aws",
           "type": "lambda",
           "name": "ml-experiment-warmup",
-          "created_date": "2023-06-01",
+          "created_date": "2023-06-01T08:00:00",
           "monthly_cost": 4.5,
-          "last_usage_date": "2024-06-10",
+          "last_usage_date": "2024-06-10T00:00:00",
           "tags": {
             "project": "ml-experiment-v2"
           },
@@ -268,24 +355,40 @@
           "expiry_date": null,
           "cpu_utilization_percent": 0.0,
           "has_backups": false,
-          "region": "us-east-1"
-        },
+          "region": "us-east-1",
+          "state": "active",
+          "data_source": "simulated"
+        }
+      ],
+      "subscriptions": [],
+      "dependencies": {},
+      "last_github_activity": "2026-06-10T17:15:58.083025",
+      "days_since_activity": 82,
+      "critical_deadlines": [],
+      "risk_level": "RiskLevel.LOW",
+      "github_repo": "alice/ml-experiment-v2",
+      "recent_commits": 1
+    },
+    {
+      "name": "legacy",
+      "inferred_membership_confidence": 0.2,
+      "resources": [
         {
-          "id": "gcp-ml-pipeline",
-          "provider": "gcp",
-          "type": "compute",
-          "name": "ml-experiment-pipeline",
-          "created_date": "2024-03-10",
+          "id": "i-legacy-backup-07abc",
+          "provider": "aws",
+          "type": "ec2",
+          "name": "legacy-prod-backup",
+          "created_date": "2026-02-15T00:00:00",
           "monthly_cost": 80.0,
-          "last_usage_date": "2024-06-10",
-          "tags": {
-            "project": "ml-experiment-v2"
-          },
+          "last_usage_date": "2026-02-20T00:00:00",
+          "tags": {},
           "billing_status": "active",
           "expiry_date": null,
-          "cpu_utilization_percent": null,
+          "cpu_utilization_percent": 1.1,
           "has_backups": false,
-          "region": "us-east-1"
+          "region": "us-east-1",
+          "state": "running",
+          "data_source": "simulated"
         }
       ],
       "subscriptions": [],
@@ -293,7 +396,56 @@
       "last_github_activity": null,
       "days_since_activity": 999,
       "critical_deadlines": [],
-      "risk_level": "RiskLevel.LOW"
+      "risk_level": "RiskLevel.LOW",
+      "github_repo": null,
+      "recent_commits": 0
+    },
+    {
+      "name": "personal-services",
+      "inferred_membership_confidence": 0.7,
+      "resources": [],
+      "subscriptions": [
+        {
+          "id": "sub_audible_001",
+          "provider": "stripe",
+          "service": "Audible Premium",
+          "renewal_date": "2026-09-02",
+          "monthly_cost": 14.99,
+          "auto_renew": true,
+          "last_usage_date": "2026-07-15",
+          "billing_cycle": "monthly",
+          "status": "active",
+          "data_source": "simulated"
+        },
+        {
+          "id": "sub_figma_trial",
+          "provider": "stripe",
+          "service": "Figma Pro Trial",
+          "renewal_date": "2026-09-01",
+          "monthly_cost": 12.0,
+          "auto_renew": true,
+          "last_usage_date": "2026-08-01",
+          "billing_cycle": "monthly",
+          "status": "active",
+          "data_source": "simulated"
+        }
+      ],
+      "dependencies": {},
+      "last_github_activity": null,
+      "days_since_activity": 999,
+      "critical_deadlines": [
+        [
+          "sub_figma_trial",
+          "2026-09-01"
+        ],
+        [
+          "sub_audible_001",
+          "2026-09-02"
+        ]
+      ],
+      "risk_level": "RiskLevel.LOW",
+      "github_repo": null,
+      "recent_commits": 0
     }
   ],
   "risk_assessments": [
@@ -301,35 +453,159 @@
       "project_name": "pet-tracker",
       "urgency_level": "LOW",
       "blast_radius": "WIDE",
-      "days_to_outage": 999,
-      "confidence": 0.7,
-      "recommended_action": "ActionType.KEEP",
+      "days_to_outage": 8,
+      "confidence": 0.93,
+      "recommended_action": "ActionType.MONITOR",
       "unsafe_action_flags": [],
       "estimated_damage": {
         "project_downtime_hours": 24,
         "user_impact": "production_unavailable",
         "data_risk": "database_inaccessible",
-        "cost_multiplier": 3600.0
+        "cost_multiplier": 3204.0
       },
+      "reasoning": "Evidence arbitration: Subscription is active; continue monitoring usage and renewal. activity=9d, dependencies=1, action=MONITOR.",
       "escalate_for_review": false,
-      "escalation_reason": null
+      "escalation_reason": null,
+      "evidence_ledger": [
+        {
+          "value": "membership=0.80",
+          "source": "inference",
+          "confidence": 0.8,
+          "timestamp": "2026-08-31T17:16:16.834988"
+        },
+        {
+          "value": "last_activity=9d",
+          "source": "usage",
+          "confidence": 0.85,
+          "timestamp": "2026-08-31T17:16:16.835016"
+        },
+        {
+          "value": "1 inferred dependency edge(s) with active dependent",
+          "source": "dependency",
+          "confidence": 0.8,
+          "timestamp": "2026-08-31T17:16:16.835052"
+        }
+      ],
+      "conflicts": [
+        {
+          "signals": [
+            "low activity",
+            "production or critical designation"
+          ],
+          "resolution": "human review required"
+        }
+      ],
+      "lifecycle_state": "RECOMMENDED"
     },
     {
       "project_name": "ml-experiment-v2",
       "urgency_level": "LOW",
       "blast_radius": "NARROW",
       "days_to_outage": 999,
-      "confidence": 0.5,
-      "recommended_action": "ActionType.ARCHIVE",
+      "confidence": 0.81,
+      "recommended_action": "ActionType.KEEP",
       "unsafe_action_flags": [],
       "estimated_damage": {
         "project_downtime_hours": 0,
         "user_impact": "internal_only",
         "data_risk": "none",
-        "cost_multiplier": 1014.0
+        "cost_multiplier": 462.0
       },
+      "reasoning": "Evidence arbitration: Recent repository activity is stronger evidence than an infrequently invoked component. activity=812d, dependencies=0, action=KEEP.",
+      "escalate_for_review": false,
+      "escalation_reason": null,
+      "evidence_ledger": [
+        {
+          "value": "membership=0.70",
+          "source": "inference",
+          "confidence": 0.7,
+          "timestamp": "2026-08-31T17:16:16.835744"
+        },
+        {
+          "value": "last_activity=812d",
+          "source": "usage",
+          "confidence": 0.85,
+          "timestamp": "2026-08-31T17:16:16.835747"
+        }
+      ],
+      "conflicts": [],
+      "lifecycle_state": "RECOMMENDED"
+    },
+    {
+      "project_name": "legacy",
+      "urgency_level": "LOW",
+      "blast_radius": "MEDIUM",
+      "days_to_outage": 999,
+      "confidence": 0.69,
+      "recommended_action": "ActionType.ESCALATE",
+      "unsafe_action_flags": [],
+      "estimated_damage": {
+        "project_downtime_hours": 4,
+        "user_impact": "internal_only",
+        "data_risk": "none",
+        "cost_multiplier": 960.0
+      },
+      "reasoning": "Evidence arbitration: Ownership or shared blast radius is unresolved. activity=192d, dependencies=0, action=ESCALATE.",
       "escalate_for_review": true,
-      "escalation_reason": "Confidence < 0.60 \u2014 ambiguous project ownership"
+      "escalation_reason": "Ownership or shared blast radius is unresolved",
+      "evidence_ledger": [
+        {
+          "value": "membership=0.20",
+          "source": "inference",
+          "confidence": 0.2,
+          "timestamp": "2026-08-31T17:16:16.836160"
+        },
+        {
+          "value": "last_activity=192d",
+          "source": "usage",
+          "confidence": 0.85,
+          "timestamp": "2026-08-31T17:16:16.836163"
+        }
+      ],
+      "conflicts": [
+        {
+          "signals": [
+            "low activity",
+            "production or critical designation"
+          ],
+          "resolution": "human review required"
+        }
+      ],
+      "lifecycle_state": "ESCALATED"
+    },
+    {
+      "project_name": "personal-services",
+      "urgency_level": "CRITICAL",
+      "blast_radius": "NARROW",
+      "days_to_outage": 0,
+      "confidence": 0.69,
+      "recommended_action": "ActionType.ESCALATE",
+      "unsafe_action_flags": [],
+      "estimated_damage": {
+        "project_downtime_hours": 0,
+        "user_impact": "internal_only",
+        "data_risk": "none",
+        "cost_multiplier": 0
+      },
+      "reasoning": "Evidence arbitration: Subscription needs a human decision or has a governance signal. activity=999d, dependencies=0, action=ESCALATE.",
+      "escalate_for_review": true,
+      "escalation_reason": "Subscription needs a human decision or has a governance signal",
+      "evidence_ledger": [
+        {
+          "value": "membership=0.70",
+          "source": "inference",
+          "confidence": 0.7,
+          "timestamp": "2026-08-31T17:16:16.836693"
+        },
+        {
+          "value": "last_activity=999d",
+          "source": "usage",
+          "confidence": 0.3,
+          "timestamp": "2026-08-31T17:16:16.836696"
+        }
+      ],
+      "conflicts": [],
+      "lifecycle_state": "ESCALATED"
     }
   ],
   "optimization_plans": {
@@ -338,104 +614,530 @@
         "plan_id": "plan_pet-tracker_maintain",
         "project_name": "pet-tracker",
         "plan_name": "MAINTAIN",
-        "description": "Renew all critical services, keep current stack",
-        "actions": [],
+        "description": "Keep current resources, renew approaching deadlines",
+        "actions": [
+          {
+            "action": "RENEW",
+            "resource_id": "sub_render_backend",
+            "resource_name": "sub_render_backend",
+            "reason": "approaching_deadline",
+            "dry_run_expected": "Would extend sub_render_backend by 30 days"
+          }
+        ],
         "total_monthly_savings": 0.0,
         "effort_hours": 0.5,
         "risk_level": "RiskLevel.LOW",
         "recommended": false,
+        "reasoning": "Maintain current stack; renew approaching deadlines",
         "annual_savings": 0.0,
         "rollback_plan": "Cancel renewals within grace period",
-        "implementation_steps": [
-          "Verify all services active",
-          "Renew critical subscriptions",
-          "Confirm in dashboard"
-        ]
+        "implementation_steps": []
+      }
+    ],
+    "ml-experiment-v2": [
+      {
+        "plan_id": "plan_ml-experiment-v2_maintain",
+        "project_name": "ml-experiment-v2",
+        "plan_name": "MAINTAIN",
+        "description": "Keep current resources, renew approaching deadlines",
+        "actions": [],
+        "total_monthly_savings": 0.0,
+        "effort_hours": 0.5,
+        "risk_level": "RiskLevel.LOW",
+        "recommended": true,
+        "reasoning": "Maintain current stack; renew approaching deadlines",
+        "annual_savings": 0.0,
+        "rollback_plan": "Cancel renewals within grace period",
+        "implementation_steps": []
       },
       {
-        "plan_id": "plan_pet-tracker_migrate",
-        "project_name": "pet-tracker",
-        "plan_name": "MIGRATE",
-        "description": "Move to cheaper stack, save $256.00/mo",
+        "plan_id": "plan_ml-experiment-v2_simplify",
+        "project_name": "ml-experiment-v2",
+        "plan_name": "SIMPLIFY",
+        "description": "Stop 2 idle resource(s) (60+ days idle)",
         "actions": [
           {
-            "action": "MIGRATE",
-            "resource_id": "i-prod-backend",
-            "resource_name": "pet-tracker-backend",
-            "from": "ec2",
-            "to": "Fly.io",
-            "reason": "Save $115.00/mo",
-            "dry_run_expected": "Would migrate pet-tracker-backend \u2192 Fly.io"
+            "action": "STOP",
+            "resource_id": "i-0dead1234beef5678",
+            "resource_name": "ml-experiment-v2-worker",
+            "reason": "812 days idle",
+            "dry_run_expected": "Would stop ec2 i-0dead1234beef5678, save $34.00/mo"
           },
           {
-            "action": "MIGRATE",
-            "resource_id": "rds-pet-tracker-db",
-            "resource_name": "pet-tracker-db",
-            "from": "rds",
-            "to": "PlanetScale",
-            "reason": "Save $141.00/mo",
-            "dry_run_expected": "Would migrate pet-tracker-db \u2192 PlanetScale"
+            "action": "STOP",
+            "resource_id": "lambda-ml-warmer",
+            "resource_name": "ml-experiment-warmup",
+            "reason": "812 days idle",
+            "dry_run_expected": "Would stop lambda lambda-ml-warmer, save $4.50/mo"
           }
         ],
-        "total_monthly_savings": 256.0,
-        "effort_hours": 14.0,
-        "risk_level": "RiskLevel.MEDIUM",
+        "total_monthly_savings": 38.5,
+        "effort_hours": 1.0,
+        "risk_level": "RiskLevel.LOW",
         "recommended": true,
-        "annual_savings": 3072.0,
-        "rollback_plan": "Keep old stack running during migration; rollback by reverting DNS",
+        "reasoning": "Stop resources idle 60+ days. Reversible STOP, not DELETE.",
+        "annual_savings": 462.0,
+        "rollback_plan": "Restart EC2 instances from AWS console",
         "implementation_steps": [
-          "Provision new stack",
-          "Parallel run 48h",
-          "Verify data",
-          "Cutover DNS",
-          "Decommission old"
+          "Dry-run STOP",
+          "Notify team",
+          "Execute STOP",
+          "Monitor 24h"
+        ]
+      }
+    ],
+    "legacy": [
+      {
+        "plan_id": "plan_legacy_escalate",
+        "project_name": "legacy",
+        "plan_name": "ESCALATE",
+        "description": "Human review required before any automated action",
+        "actions": [
+          {
+            "action": "NOTIFY",
+            "resource_id": "all",
+            "resource_name": "all",
+            "reason": "Ownership or shared blast radius is unresolved",
+            "dry_run_expected": "Would send escalation notification"
+          }
+        ],
+        "total_monthly_savings": 0.0,
+        "effort_hours": 0.5,
+        "risk_level": "RiskLevel.LOW",
+        "recommended": true,
+        "reasoning": "Ownership or shared blast radius is unresolved",
+        "annual_savings": 0.0,
+        "rollback_plan": "N/A \u2014 no action taken",
+        "implementation_steps": [
+          "Review project ownership",
+          "Confirm resources",
+          "Decide action"
+        ]
+      }
+    ],
+    "personal-services": [
+      {
+        "plan_id": "plan_personal-services_escalate",
+        "project_name": "personal-services",
+        "plan_name": "ESCALATE",
+        "description": "Human review required before any automated action",
+        "actions": [
+          {
+            "action": "NOTIFY",
+            "resource_id": "all",
+            "resource_name": "all",
+            "reason": "Subscription needs a human decision or has a governance signal",
+            "dry_run_expected": "Would send escalation notification"
+          }
+        ],
+        "total_monthly_savings": 0.0,
+        "effort_hours": 0.5,
+        "risk_level": "RiskLevel.LOW",
+        "recommended": true,
+        "reasoning": "Subscription needs a human decision or has a governance signal",
+        "annual_savings": 0.0,
+        "rollback_plan": "N/A \u2014 no action taken",
+        "implementation_steps": [
+          "Review project ownership",
+          "Confirm resources",
+          "Decide action"
         ]
       }
     ]
   },
   "execution_records": [
     {
-      "execution_id": "exec_3b2801b8",
-      "plan_id": "plan_pet-tracker_migrate",
+      "execution_id": "exec_247944d9",
+      "plan_id": "plan_ml-experiment-v2_maintain",
       "user_id": "test_user_1",
       "status": "DRY_RUN_OK",
-      "started_at": "2026-08-29T19:21:19.946504",
-      "completed_at": "2026-08-29T19:21:19.946557",
+      "started_at": "2026-08-31T17:16:16.862651",
+      "completed_at": "2026-08-31T17:16:16.863179",
+      "dry_run_results": [],
+      "actions_executed": [],
+      "verification_polls": [],
+      "audit_log_id": "log_c5427e99",
+      "cost_savings_realized": 0.0
+    },
+    {
+      "execution_id": "exec_b341eb9d",
+      "plan_id": "plan_ml-experiment-v2_simplify",
+      "user_id": "test_user_1",
+      "status": "DRY_RUN_OK",
+      "started_at": "2026-08-31T17:16:16.863194",
+      "completed_at": "2026-08-31T17:16:16.863614",
       "dry_run_results": [
         {
-          "action": "MIGRATE",
-          "resource_id": "i-prod-backend",
+          "action": "STOP",
+          "resource_id": "i-0dead1234beef5678",
           "dry_run_status": "DRY_RUN_OK",
-          "expected_result": "Would migrate pet-tracker-backend \u2192 Fly.io",
+          "expected_result": "Would stop ec2 i-0dead1234beef5678, save $34.00/mo",
           "dry_run_error": null
         },
         {
-          "action": "MIGRATE",
-          "resource_id": "rds-pet-tracker-db",
+          "action": "STOP",
+          "resource_id": "lambda-ml-warmer",
           "dry_run_status": "DRY_RUN_OK",
-          "expected_result": "Would migrate pet-tracker-db \u2192 PlanetScale",
+          "expected_result": "Would stop lambda lambda-ml-warmer, save $4.50/mo",
           "dry_run_error": null
         }
       ],
       "actions_executed": [],
       "verification_polls": [],
-      "audit_log_id": "log_e4507e36",
+      "audit_log_id": "log_9a53468d",
+      "cost_savings_realized": 0.0
+    },
+    {
+      "execution_id": "exec_467fddde",
+      "plan_id": "plan_legacy_escalate",
+      "user_id": "test_user_1",
+      "status": "DRY_RUN_OK",
+      "started_at": "2026-08-31T17:16:16.863622",
+      "completed_at": "2026-08-31T17:16:16.864013",
+      "dry_run_results": [
+        {
+          "action": "NOTIFY",
+          "resource_id": "all",
+          "dry_run_status": "DRY_RUN_OK",
+          "expected_result": "Would send escalation notification",
+          "dry_run_error": null
+        }
+      ],
+      "actions_executed": [],
+      "verification_polls": [],
+      "audit_log_id": "log_425c9010",
+      "cost_savings_realized": 0.0
+    },
+    {
+      "execution_id": "exec_49db3929",
+      "plan_id": "plan_personal-services_escalate",
+      "user_id": "test_user_1",
+      "status": "DRY_RUN_OK",
+      "started_at": "2026-08-31T17:16:16.864021",
+      "completed_at": "2026-08-31T17:16:16.864422",
+      "dry_run_results": [
+        {
+          "action": "NOTIFY",
+          "resource_id": "all",
+          "dry_run_status": "DRY_RUN_OK",
+          "expected_result": "Would send escalation notification",
+          "dry_run_error": null
+        }
+      ],
+      "actions_executed": [],
+      "verification_polls": [],
+      "audit_log_id": "log_7cb1ca97",
       "cost_savings_realized": 0.0
     }
   ],
   "audit_log": [
     {
-      "log_id": "log_e4507e36",
+      "log_id": "log_c5427e99",
       "agent_name": "execution_agent",
-      "decision": "DRY_RUN_OK: MIGRATE \u2014 2 actions ready",
+      "decision": "DRY_RUN_OK: MAINTAIN \u2014 0 actions ready",
+      "confidence": 0.95,
+      "evidence": [],
+      "timestamp": "2026-08-31T17:16:16.862847",
+      "action_id": "exec_247944d9"
+    },
+    {
+      "log_id": "log_9a53468d",
+      "agent_name": "execution_agent",
+      "decision": "DRY_RUN_OK: SIMPLIFY \u2014 2 actions ready",
       "confidence": 0.95,
       "evidence": [
-        "Would migrate pet-tracker-backend \u2192 Fly.io",
-        "Would migrate pet-tracker-db \u2192 PlanetScale"
+        "Would stop ec2 i-0dead1234beef5678, save $34.00/mo",
+        "Would stop lambda lambda-ml-warmer, save $4.50/mo"
       ],
-      "timestamp": "2026-08-29T19:21:19.946540",
-      "action_id": "exec_3b2801b8"
+      "timestamp": "2026-08-31T17:16:16.863352",
+      "action_id": "exec_b341eb9d"
+    },
+    {
+      "log_id": "log_425c9010",
+      "agent_name": "execution_agent",
+      "decision": "DRY_RUN_OK: ESCALATE \u2014 1 actions ready",
+      "confidence": 0.95,
+      "evidence": [
+        "Would send escalation notification"
+      ],
+      "timestamp": "2026-08-31T17:16:16.863758",
+      "action_id": "exec_467fddde"
+    },
+    {
+      "log_id": "log_7cb1ca97",
+      "agent_name": "execution_agent",
+      "decision": "DRY_RUN_OK: ESCALATE \u2014 1 actions ready",
+      "confidence": 0.95,
+      "evidence": [
+        "Would send escalation notification"
+      ],
+      "timestamp": "2026-08-31T17:16:16.864157",
+      "action_id": "exec_49db3929"
     }
   ],
-  "dashboard": "\n\u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2557\n\u2551        YOUR LIFECYCLE DASHBOARD             \u2551\n\u255a\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u255d\n\n\ud83d\udcca OVERVIEW\n  \ud83d\udd34 0 CRITICAL (action needed in 0\u20133 days)\n  \ud83d\udfe0 0 HIGH (action needed in 3\u20137 days)\n  \ud83d\udfe1 1 REQUIRES HUMAN REVIEW\n  \ud83d\udfe2 2 HEALTHY\n\n  Total monthly cost:  $384.50\n  Savings opportunity: $256.00/mo  ($3072.00/yr)\n  Total resources:     5\n\n\ud83d\udcb3 BILLING EVENTS\n  \ud83d\udd14 Audible: renewal \u2014 $14.99 (due 2026-08-30)\n  \ud83d\udd14 render_backend: renewal \u2014 $7.00 (due 2026-08-31)\n\n\ud83d\udccb OPTIMIZATION OPPORTUNITIES\n  \u2705 pet-tracker: MIGRATE \u2014 $256.00/mo ($3072.00/yr)\n\n\u2705 Dry-run complete. Awaiting human approval to execute. [VIEW PLANS]\n"
+  "trajectory": [
+    {
+      "step_id": "step_3b030737",
+      "agent_name": "DiscoveryAgent",
+      "action": "Simulation mode activated",
+      "inputs_summary": "No cloud credentials configured",
+      "outputs_summary": "Loaded 5 simulated AWS resources with realistic scenario data",
+      "evidence": [
+        "[SIMULATED] pet-tracker-backend (ec2) cost=$87.0/mo",
+        "[SIMULATED] pet-tracker-db (rds) cost=$180.0/mo",
+        "[SIMULATED] ml-experiment-v2-worker (ec2) cost=$34.0/mo",
+        "[SIMULATED] ml-experiment-warmup (lambda) cost=$4.5/mo",
+        "[SIMULATED] legacy-prod-backup (ec2) cost=$80.0/mo"
+      ],
+      "decision": null,
+      "confidence": null,
+      "simulated": true,
+      "timestamp": "2026-08-31T17:16:15.517198",
+      "error": null
+    },
+    {
+      "step_id": "step_fac2a481",
+      "agent_name": "DiscoveryAgent",
+      "action": "Simulated subscriptions loaded",
+      "inputs_summary": "No Stripe/Render credentials",
+      "outputs_summary": "Loaded 3 simulated subscriptions",
+      "evidence": [
+        "[SIMULATED] Audible Premium $14.99/mo, renews 2026-09-02",
+        "[SIMULATED] render-pet-tracker $7.0/mo, renews 2026-09-09",
+        "[SIMULATED] Figma Pro Trial $12.0/mo, renews 2026-09-01"
+      ],
+      "decision": null,
+      "confidence": null,
+      "simulated": true,
+      "timestamp": "2026-08-31T17:16:16.831458",
+      "error": null
+    },
+    {
+      "step_id": "step_87ae36fe",
+      "agent_name": "InferenceAgent",
+      "action": "Project clustering",
+      "inputs_summary": "5 resources + 3 subscriptions + GitHub activity",
+      "outputs_summary": "Identified 4 projects: ['pet-tracker', 'ml-experiment-v2', 'legacy', 'personal-services']",
+      "evidence": [
+        "Project 'pet-tracker': confidence=0.80, resources=2, deadlines=1, github_days_since=10",
+        "Project 'ml-experiment-v2': confidence=0.70, resources=2, deadlines=0, github_days_since=82",
+        "Project 'legacy': confidence=0.20, resources=1, deadlines=0, github_days_since=999",
+        "Project 'personal-services': confidence=0.70, resources=0, deadlines=2, github_days_since=999"
+      ],
+      "decision": null,
+      "confidence": null,
+      "simulated": false,
+      "timestamp": "2026-08-31T17:16:16.833691",
+      "error": null
+    },
+    {
+      "step_id": "step_c9e4c6a8",
+      "agent_name": "RiskAssessmentAgent",
+      "action": "Rule-based risk analysis for 'pet-tracker' (LLM unavailable)",
+      "inputs_summary": "confidence=0.80, days_since=10, urgent_deadlines=0",
+      "outputs_summary": "Decision: MONITOR | urgency=LOW | escalate=False",
+      "evidence": [
+        "Evidence arbitration: Subscription is active; continue monitoring usage and renewal. activity=9d, dependencies=1, action=MONITOR."
+      ],
+      "decision": "MONITOR",
+      "confidence": 0.93,
+      "simulated": false,
+      "timestamp": "2026-08-31T17:16:16.835149",
+      "error": null
+    },
+    {
+      "step_id": "step_aa5413af",
+      "agent_name": "RiskAssessmentAgent",
+      "action": "Rule-based risk analysis for 'ml-experiment-v2' (LLM unavailable)",
+      "inputs_summary": "confidence=0.70, days_since=82, urgent_deadlines=0",
+      "outputs_summary": "Decision: KEEP | urgency=LOW | escalate=False",
+      "evidence": [
+        "Evidence arbitration: Recent repository activity is stronger evidence than an infrequently invoked component. activity=812d, dependencies=0, action=KEEP."
+      ],
+      "decision": "KEEP",
+      "confidence": 0.81,
+      "simulated": false,
+      "timestamp": "2026-08-31T17:16:16.835794",
+      "error": null
+    },
+    {
+      "step_id": "step_bcd38211",
+      "agent_name": "RiskAssessmentAgent",
+      "action": "Rule-based risk analysis for 'legacy' (LLM unavailable)",
+      "inputs_summary": "confidence=0.20, days_since=999, urgent_deadlines=0",
+      "outputs_summary": "Decision: ESCALATE | urgency=LOW | escalate=True",
+      "evidence": [
+        "Evidence arbitration: Ownership or shared blast radius is unresolved. activity=192d, dependencies=0, action=ESCALATE."
+      ],
+      "decision": "ESCALATE",
+      "confidence": 0.69,
+      "simulated": false,
+      "timestamp": "2026-08-31T17:16:16.836187",
+      "error": null
+    },
+    {
+      "step_id": "step_001a5cc6",
+      "agent_name": "RiskAssessmentAgent",
+      "action": "Rule-based risk analysis for 'personal-services' (LLM unavailable)",
+      "inputs_summary": "confidence=0.70, days_since=999, urgent_deadlines=2",
+      "outputs_summary": "Decision: ESCALATE | urgency=CRITICAL | escalate=True",
+      "evidence": [
+        "Evidence arbitration: Subscription needs a human decision or has a governance signal. activity=999d, dependencies=0, action=ESCALATE."
+      ],
+      "decision": "ESCALATE",
+      "confidence": 0.69,
+      "simulated": false,
+      "timestamp": "2026-08-31T17:16:16.836719",
+      "error": null
+    },
+    {
+      "step_id": "step_6de504a6",
+      "agent_name": "OptimizationAgent",
+      "action": "Rule-based plan generation for 'pet-tracker' (LLM unavailable)",
+      "inputs_summary": "risk=MONITOR, days_inactive=10",
+      "outputs_summary": "Generated 1 plans: ['MAINTAIN']",
+      "evidence": [
+        "[MAINTAIN] $0.00/mo, recommended=False"
+      ],
+      "decision": null,
+      "confidence": null,
+      "simulated": false,
+      "timestamp": "2026-08-31T17:16:16.837436",
+      "error": null
+    },
+    {
+      "step_id": "step_99755ef6",
+      "agent_name": "OptimizationAgent",
+      "action": "Rule-based plan generation for 'ml-experiment-v2' (LLM unavailable)",
+      "inputs_summary": "risk=KEEP, days_inactive=82",
+      "outputs_summary": "Generated 2 plans: ['MAINTAIN', 'SIMPLIFY']",
+      "evidence": [
+        "[MAINTAIN] $0.00/mo, recommended=True",
+        "[SIMPLIFY] $38.50/mo, recommended=True"
+      ],
+      "decision": null,
+      "confidence": null,
+      "simulated": false,
+      "timestamp": "2026-08-31T17:16:16.838258",
+      "error": null
+    },
+    {
+      "step_id": "step_ef5c7be4",
+      "agent_name": "ExecutionAgent",
+      "action": "DRY RUN: MAINTAIN",
+      "inputs_summary": "Plan: plan_ml-experiment-v2_maintain, 0 actions, approved_by=test_user_1",
+      "outputs_summary": "Starting DRY RUN for plan MAINTAIN",
+      "evidence": [],
+      "decision": null,
+      "confidence": null,
+      "simulated": false,
+      "timestamp": "2026-08-31T17:16:16.862678",
+      "error": null
+    },
+    {
+      "step_id": "step_6b5129aa",
+      "agent_name": "ExecutionAgent",
+      "action": "Dry-run complete \u2014 awaiting human approval",
+      "inputs_summary": "0 actions validated",
+      "outputs_summary": "All dry-runs passed. Plan MAINTAIN is safe to execute.",
+      "evidence": [],
+      "decision": "DRY_RUN_OK",
+      "confidence": 0.95,
+      "simulated": false,
+      "timestamp": "2026-08-31T17:16:16.863015",
+      "error": null
+    },
+    {
+      "step_id": "step_f184c635",
+      "agent_name": "ExecutionAgent",
+      "action": "DRY RUN: SIMPLIFY",
+      "inputs_summary": "Plan: plan_ml-experiment-v2_simplify, 2 actions, approved_by=test_user_1",
+      "outputs_summary": "Starting DRY RUN for plan SIMPLIFY",
+      "evidence": [
+        "Action: STOP on i-0dead1234beef5678",
+        "Action: STOP on lambda-ml-warmer"
+      ],
+      "decision": null,
+      "confidence": null,
+      "simulated": false,
+      "timestamp": "2026-08-31T17:16:16.863203",
+      "error": null
+    },
+    {
+      "step_id": "step_a376f8d3",
+      "agent_name": "ExecutionAgent",
+      "action": "Dry-run complete \u2014 awaiting human approval",
+      "inputs_summary": "2 actions validated",
+      "outputs_summary": "All dry-runs passed. Plan SIMPLIFY is safe to execute.",
+      "evidence": [
+        "Would stop ec2 i-0dead1234beef5678, save $34.00/mo",
+        "Would stop lambda lambda-ml-warmer, save $4.50/mo"
+      ],
+      "decision": "DRY_RUN_OK",
+      "confidence": 0.95,
+      "simulated": false,
+      "timestamp": "2026-08-31T17:16:16.863485",
+      "error": null
+    },
+    {
+      "step_id": "step_6df744fe",
+      "agent_name": "ExecutionAgent",
+      "action": "DRY RUN: ESCALATE",
+      "inputs_summary": "Plan: plan_legacy_escalate, 1 actions, approved_by=test_user_1",
+      "outputs_summary": "Starting DRY RUN for plan ESCALATE",
+      "evidence": [
+        "Action: NOTIFY on all"
+      ],
+      "decision": null,
+      "confidence": null,
+      "simulated": false,
+      "timestamp": "2026-08-31T17:16:16.863629",
+      "error": null
+    },
+    {
+      "step_id": "step_5e09b706",
+      "agent_name": "ExecutionAgent",
+      "action": "Dry-run complete \u2014 awaiting human approval",
+      "inputs_summary": "1 actions validated",
+      "outputs_summary": "All dry-runs passed. Plan ESCALATE is safe to execute.",
+      "evidence": [
+        "Would send escalation notification"
+      ],
+      "decision": "DRY_RUN_OK",
+      "confidence": 0.95,
+      "simulated": false,
+      "timestamp": "2026-08-31T17:16:16.863889",
+      "error": null
+    },
+    {
+      "step_id": "step_6812ad60",
+      "agent_name": "ExecutionAgent",
+      "action": "DRY RUN: ESCALATE",
+      "inputs_summary": "Plan: plan_personal-services_escalate, 1 actions, approved_by=test_user_1",
+      "outputs_summary": "Starting DRY RUN for plan ESCALATE",
+      "evidence": [
+        "Action: NOTIFY on all"
+      ],
+      "decision": null,
+      "confidence": null,
+      "simulated": false,
+      "timestamp": "2026-08-31T17:16:16.864028",
+      "error": null
+    },
+    {
+      "step_id": "step_ed6f972b",
+      "agent_name": "ExecutionAgent",
+      "action": "Dry-run complete \u2014 awaiting human approval",
+      "inputs_summary": "1 actions validated",
+      "outputs_summary": "All dry-runs passed. Plan ESCALATE is safe to execute.",
+      "evidence": [
+        "Would send escalation notification"
+      ],
+      "decision": "DRY_RUN_OK",
+      "confidence": 0.95,
+      "simulated": false,
+      "timestamp": "2026-08-31T17:16:16.864284",
+      "error": null
+    }
+  ]
 }

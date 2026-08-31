@@ -1,25 +1,51 @@
-# Core
+# ============================================================
+# Defrag — Python Dependencies
+# ============================================================
+
+# Core web framework
+fastapi>=0.110.0
+uvicorn[standard]>=0.27.0
+python-multipart>=0.0.9
+
+# Environment + utilities
+python-dotenv>=1.0.0
+requests>=2.31.0
+pydantic>=2.0.0
+
+# Database (ORM)
+sqlalchemy>=2.0.0
+# PostgreSQL driver (optional — SQLite works without this)
+# psycopg2-binary>=2.9.9
+
+# ============================================================
+# CLOUD PROVIDERS
+# ============================================================
+
+# AWS (EC2, RDS, Lambda, S3, CloudWatch)
 boto3>=1.34.0
 botocore>=1.34.0
-requests>=2.31.0
-python-dotenv>=1.0.0
 
-# GCP
-google-cloud-compute>=1.14.0
-google-auth>=2.27.0
+# GCP Compute (optional)
+# google-cloud-compute>=1.14.0
+# google-auth>=2.27.0
 
 # GitHub
 PyGithub>=2.1.1
 
-# Stripe
+# Stripe (subscription billing)
 stripe>=8.0.0
 
-# Database
-sqlalchemy>=2.0.0
-psycopg2-binary>=2.9.9
+# ============================================================
+# LLM PROVIDERS (install at least one)
+# ============================================================
 
-# Firebase (optional)
-firebase-admin>=6.4.0
+# Google Gemini (recommended — uses the new google-genai SDK)
+google-genai>=1.0.0
 
-# Evaluation
+# OpenAI (alternative)
+# openai>=1.12.0
+
+# ============================================================
+# EVALUATION
+# ============================================================
 tabulate>=0.9.0

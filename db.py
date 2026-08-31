@@ -1,15 +1,21 @@
 """
 Database models and helpers for Lifecycle Orchestrator state persistence.
-PostgreSQL via SQLAlchemy ORM.
+Primary: PostgreSQL via SQLAlchemy ORM (configured by DATABASE_URL env var).
+Fallback: SQLite (defrag.db in project root) — no extra setup required.
 """
 
+import os
 import json
 from sqlalchemy import create_engine, Column, String, Float, Integer, JSON, Boolean, Text
 from sqlalchemy.orm import declarative_base, sessionmaker
 
 Base = declarative_base()
 
-DATABASE_URL = "postgresql://orchestrator_user:password123@localhost:5432/orchestrator_db"
+# Read from env var; default to local SQLite so the app works out of the box
+DATABASE_URL = os.environ.get(
+    "DATABASE_URL",
+    "sqlite:///./defrag.db"
+)
 
 
 class ProjectModel(Base):
@@ -78,6 +84,15 @@ class AuditLogModel(Base):
     evidence = Column(JSON)
     timestamp = Column(String)
     action_id = Column(String, nullable=True)
+
+
+class LifecycleStateModel(Base):
+    """Append-only canonical snapshot for observations, decisions, and outcomes."""
+    __tablename__ = "lifecycle_state"
+    run_id = Column(String, primary_key=True)
+    user_id = Column(String, index=True)
+    created_at = Column(String)
+    state = Column(JSON)
 
 
 def init_db(database_url: str = DATABASE_URL):
@@ -184,4 +199,15 @@ def save_audit_log_to_db(db_session, audit_log_list):
             action_id=entry.get('action_id')
         )
         db_session.merge(model)
+    db_session.commit()
+
+
+def save_lifecycle_state(db_session, run_id, user_id, state):
+    """Persist a run snapshot without mutating prior decisions or observations."""
+    db_session.merge(LifecycleStateModel(
+        run_id=run_id,
+        user_id=user_id,
+        created_at=state.get("timestamp"),
+        state=_serialize(state),
+    ))
     db_session.commit()
